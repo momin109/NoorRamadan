@@ -210,14 +210,20 @@ export function Hero({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5, duration: 0.8 }}
-              className="flex flex-col sm:flex-row gap-2 md:gap-3 lg:gap-4"
+              className="flex flex-row gap-2 md:gap-3 lg:gap-4"
             >
-              <Link href="/sehri">
+              <Link href="/sehri" className="w-1/2 sm:w-auto">
                 <Button
                   size="lg"
-                  className="group relative w-full sm:w-auto px-4 md:px-6 lg:px-8 py-3 md:py-4 lg:py-6 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-bold text-xs md:text-sm lg:text-base rounded-xl shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/40 transition-all duration-300 overflow-hidden"
+                  className="group relative w-full sm:w-auto
+        px-3 py-2.5 text-[11px]
+        md:px-6 md:py-4 md:text-sm
+        lg:px-8 lg:py-6 lg:text-base
+        bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700
+        text-white font-bold rounded-xl shadow-2xl shadow-amber-500/30 hover:shadow-amber-500/40
+        transition-all duration-300 overflow-hidden"
                 >
-                  <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+                  <span className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                   <span className="relative flex items-center justify-center gap-1 md:gap-2 lg:gap-3">
                     <Clock className="h-3 w-3 md:h-4 md:w-4 lg:h-5 lg:w-5" />
                     সেহরির সময় দেখুন
@@ -226,11 +232,16 @@ export function Hero({
                 </Button>
               </Link>
 
-              <Link href="/services">
+              <Link href="/services" className="w-1/2 sm:w-auto">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="group relative w-full sm:w-auto px-4 md:px-6 lg:px-8 py-3 md:py-4 lg:py-6 border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold text-xs md:text-sm lg:text-base rounded-xl transition-all duration-300"
+                  className="group relative w-full sm:w-auto
+        px-3 py-2.5 text-[11px]
+        md:px-6 md:py-4 md:text-sm
+        lg:px-8 lg:py-6 lg:text-base
+        border-2 border-white/30 bg-white/10 backdrop-blur-sm hover:bg-white/20
+        text-white font-bold rounded-xl transition-all duration-300"
                 >
                   <span className="flex items-center justify-center gap-1 md:gap-2 lg:gap-3">
                     <Sparkles className="h-3 w-3 md:h-4 md:w-4 lg:h-5 lg:w-5 text-amber-300" />
