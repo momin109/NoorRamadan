@@ -677,11 +677,17 @@ const WebsiteTypes: React.FC = () => {
                                 }
                               >
                                 <option value="">সিলেক্ট করুন</option>
-                                {item.options?.map((opt) => (
-                                  <option key={opt} value={opt}>
-                                    {opt}
-                                  </option>
-                                ))}
+                                {item.type === "select" &&
+                                  Array.isArray(item.options) && (
+                                    <>
+                                      <option value="">সিলেক্ট করুন</option>
+                                      {item.options.map((opt) => (
+                                        <option key={opt} value={opt}>
+                                          {opt}
+                                        </option>
+                                      ))}
+                                    </>
+                                  )}
                               </select>
                             )}
 
