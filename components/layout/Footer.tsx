@@ -221,7 +221,7 @@ export function Footer() {
                   <Phone className="h-4 w-4" />
                 </div>
                 <span className="text-sm text-gray-600 dark:text-gray-400">
-                  +৮৮০ ১২৩৪ ৫৬৭৮৯০
+                  +880 1797-764148
                 </span>
               </li>
               <li className="flex items-center gap-3 group">
@@ -229,7 +229,7 @@ export function Footer() {
                   <Mail className="h-4 w-4" />
                 </div>
                 <span className="text-sm text-gray-600 dark:text-gray-400">
-                  hello@ramadanweb.com
+                  momin550550@gmail.com
                 </span>
               </li>
               <li className="flex items-center gap-3 group">
@@ -274,7 +274,7 @@ export function Footer() {
 
             {/* WhatsApp CTA */}
             <motion.a
-              href="https://wa.me/8801234567890"
+              href="https://wa.me/8801797764148"
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.02 }}
