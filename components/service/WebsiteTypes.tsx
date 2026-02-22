@@ -31,6 +31,37 @@ import {
 } from "@heroicons/react/24/outline";
 import { CheckIcon } from "@heroicons/react/24/solid";
 
+type BaseReqItem = {
+  id: string;
+  label: string;
+};
+
+type SelectReqItem = BaseReqItem & {
+  type: "select";
+  options: string[];
+};
+
+type RadioReqItem = BaseReqItem & {
+  type: "radio";
+  options: string[];
+};
+
+type NumberReqItem = BaseReqItem & {
+  type: "number";
+  placeholder?: string;
+};
+
+type CheckboxReqItem = BaseReqItem & {
+  type: "checkbox";
+};
+
+type ReqItem = SelectReqItem | RadioReqItem | NumberReqItem | CheckboxReqItem;
+
+type ReqSection = {
+  category: string;
+  items: ReqItem[];
+};
+
 // Website Types Data
 const websiteTypes = [
   {
@@ -259,7 +290,7 @@ const budgetLadder = [
 ];
 
 // Requirements Checklist Data
-const requirementsChecklist = [
+const requirementsChecklist: ReqSection[] = [
   {
     category: "বেসিক তথ্য",
     items: [
@@ -666,9 +697,11 @@ const WebsiteTypes: React.FC = () => {
                               {item.label}
                             </label>
 
+                            {/* SELECT */}
                             {item.type === "select" && (
                               <select
                                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                                value={checklistData[item.id] ?? ""}
                                 onChange={(e) =>
                                   setChecklistData({
                                     ...checklistData,
@@ -677,25 +710,21 @@ const WebsiteTypes: React.FC = () => {
                                 }
                               >
                                 <option value="">সিলেক্ট করুন</option>
-                                {item.type === "select" &&
-                                  Array.isArray(item.options) && (
-                                    <>
-                                      <option value="">সিলেক্ট করুন</option>
-                                      {item.options.map((opt) => (
-                                        <option key={opt} value={opt}>
-                                          {opt}
-                                        </option>
-                                      ))}
-                                    </>
-                                  )}
+                                {item.options.map((opt) => (
+                                  <option key={opt} value={opt}>
+                                    {opt}
+                                  </option>
+                                ))}
                               </select>
                             )}
 
+                            {/* NUMBER */}
                             {item.type === "number" && (
                               <input
                                 type="number"
                                 placeholder={item.placeholder}
                                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+                                value={checklistData[item.id] ?? ""}
                                 onChange={(e) =>
                                   setChecklistData({
                                     ...checklistData,
@@ -705,9 +734,10 @@ const WebsiteTypes: React.FC = () => {
                               />
                             )}
 
+                            {/* RADIO */}
                             {item.type === "radio" && (
                               <div className="flex gap-4">
-                                {item.options?.map((opt) => (
+                                {item.options.map((opt) => (
                                   <label
                                     key={opt}
                                     className="flex items-center gap-2"
@@ -717,6 +747,7 @@ const WebsiteTypes: React.FC = () => {
                                       name={item.id}
                                       value={opt}
                                       className="text-purple-600 focus:ring-purple-500"
+                                      checked={checklistData[item.id] === opt}
                                       onChange={(e) =>
                                         setChecklistData({
                                           ...checklistData,
@@ -732,11 +763,13 @@ const WebsiteTypes: React.FC = () => {
                               </div>
                             )}
 
+                            {/* CHECKBOX */}
                             {item.type === "checkbox" && (
                               <label className="flex items-center gap-2">
                                 <input
                                   type="checkbox"
                                   className="rounded text-purple-600 focus:ring-purple-500"
+                                  checked={Boolean(checklistData[item.id])}
                                   onChange={(e) =>
                                     setChecklistData({
                                       ...checklistData,
